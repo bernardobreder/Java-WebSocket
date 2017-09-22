@@ -1,0 +1,1 @@
+java -cp /home/ubuntu/webapps/websocket/dist/breder_websocket.jar breder.net.server.web.WebServerSocketMain

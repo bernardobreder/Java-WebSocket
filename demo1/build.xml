@@ -1,0 +1,32 @@
+<project name="Breder Web Socket" default="dist" basedir=".">
+	<property name="src" location="src" />
+	<property name="lib" location="lib" />
+	<property name="build" location="bin" />
+	<property name="dist" location="dist" />
+
+	<target name="init">
+		<tstamp />
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<path id="compile.path">
+		</path>
+		<javac srcdir="${src}" destdir="${build}" debug="true" deprecation="true" includeantruntime="false">
+			<classpath refid="compile.path" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile">
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/breder_websocket.jar" basedir="${build}">
+			<zipfileset excludes="META-INF/*.SF" src="${lib}/mysql-connector-java-5.1.21-bin.jar" />
+			<fileset dir="${src}" includes="**/*.java" />
+		</jar>
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>

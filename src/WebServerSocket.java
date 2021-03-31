@@ -67,7 +67,7 @@ public class WebServerSocket extends ServerSocket {
     private final Socket socket;
     /** Entrada */
     private WebSocketInputStream in;
-    /** Saída */
+    /** Saï¿½da */
     private WebSocketOutputStream out;
 
     /**
@@ -609,7 +609,7 @@ public class WebServerSocket extends ServerSocket {
     protected final InputStream input;
     /** Bytes para serem lidos */
     private ByteArrayInputStream in;
-    /** Indica que está fechado */
+    /** Indica que estï¿½ fechado */
     private boolean closed;
 
     /**
@@ -771,7 +771,7 @@ public class WebServerSocket extends ServerSocket {
         long len = bytes.length;
         frame[1] = (byte) 127;
         frame[2] = (byte) ((len >> 56) & 0xFF);
-        frame[3] = (byte) ((len >> 22) & 0xFF);
+        frame[3] = (byte) ((len >> 48) & 0xFF);
         frame[4] = (byte) ((len >> 40) & 0xFF);
         frame[5] = (byte) ((len >> 32) & 0xFF);
         frame[6] = (byte) ((len >> 24) & 0xFF);
@@ -843,7 +843,7 @@ public class WebServerSocket extends ServerSocket {
 
     /** Socket */
     protected final WebSocket socket;
-    /** Saída */
+    /** Saï¿½da */
     protected final OutputStream out;
 
     /**
@@ -875,7 +875,7 @@ public class WebServerSocket extends ServerSocket {
   }
 
   public static void main(String[] args) throws Exception {
-    WebServerSocket server = new WebServerSocket(8080);
+    WebServerSocket server = new WebServerSocket(9090);
     for (;;) {
       try {
         Socket socket = server.accept();
